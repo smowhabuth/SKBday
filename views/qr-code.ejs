@@ -1,0 +1,12 @@
+<div class="qr-page">
+    <h2>QR Code for <%= user.name %></h2>
+    <div class="qr-container">
+        <img src="<%= qr %>" alt="QR Code for <%= user.name %>" class="qr-image">
+        <div class="qr-details">
+            <p><strong>Name:</strong> <%= user.name %></p>
+            <p><strong>Access Code:</strong> <%= user.accessCode %></p>
+            <p><strong>Login URL:</strong> <a href="<%= url %>"><%= url %></a></p>
+        </div>
+    </div>
+    <a href="/admin/users" class="back-btn">← Back to Users</a>
+</div>

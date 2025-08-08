@@ -1,0 +1,13 @@
+<div class="codes-page">
+    <h1>Friend Access Codes</h1>
+    <div class="qr-grid">
+        <% qrCodes.forEach(friend => { %>
+            <div class="qr-card">
+                <h3><%= friend.name %></h3>
+                <img src="<%= friend.qr %>" alt="QR Code for <%= friend.name %>">
+                <p>Code: <strong><%= friend.code %></strong></p>
+                <p>URL: <a href="<%= friend.url %>"><%= friend.url %></a></p>
+            </div>
+        <% }); %>
+    </div>
+</div>

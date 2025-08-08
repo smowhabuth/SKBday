@@ -1,0 +1,33 @@
+<div class="admin-page">
+    <h2>Manage Users</h2>
+    
+    <div class="admin-section">
+        <h3>Add New User</h3>
+        <form action="/admin/add-user" method="POST" class="admin-form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="accessCode">Access Code:</label>
+                <input type="text" id="accessCode" name="accessCode" required>
+            </div>
+            <button type="submit" class="submit-btn">Add User</button>
+        </form>
+    </div>
+    
+    <div class="admin-section">
+        <h3>Existing Users</h3>
+        <div class="user-list">
+            <% users.forEach(user => { %>
+                <div class="user-card">
+                    <div class="user-name"><%= user.name %></div>
+                    <div class="user-code"><%= user.accessCode %></div>
+                    <div class="user-actions">
+                        <a href="/generate-qr/<%= user.accessCode %>" class="qr-btn">Get QR</a>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="day-page">
+    <div class="date">Friday, August 29</div>
+    
+    <div class="content">
+        <h2>Dance Club Night Out</h2>
+        <p>We're starting your birthday celebration with a night out at <strong>Club Mirage</strong>!</p>
+        <p>Dress code: Elegant & Sparkly</p>
+        <p>Meet at 8:30 PM at our place - we'll go together with the group.</p>
+        
+        <div class="friends-section">
+            <h3>Messages from Friends</h3>
+            <div class="comments">
+                <% comments.forEach(comment => { %>
+                    <div class="comment">
+                        <div class="comment-author"><%= comment.author.name %>:</div>
+                        <div class="comment-text"><%= comment.text %></div>
+                        <div class="comment-time"><%= comment.createdAt.toLocaleString() %></div>
+                    </div>
+                <% }); %>
+            </div>
+            
+            <form action="/comment" method="POST" class="comment-form">
+                <input type="hidden" name="day" value="<%= dayNumber %>">
+                <textarea name="text" placeholder="Leave a message for the birthday girl!" required></textarea>
+                <button type="submit">Post Message</button>
+            </form>
+        </div>
+    </div>
+    
+    <% if (nextDay) { %>
+        <div class="next-day-note">
+            <p>Check back tomorrow for the next surprise!</p>
+        </div>
+    <% } %>
+</div>

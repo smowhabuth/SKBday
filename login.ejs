@@ -1,0 +1,13 @@
+<div class="login-page">
+    <h1>Birthday Access</h1>
+    <% if (query.error) { %>
+        <div class="error">Invalid access code</div>
+    <% } %>
+    
+    <form action="/login" method="POST">
+        <label for="accessCode">Enter your access code:</label>
+        <input type="text" id="accessCode" name="accessCode" required 
+               value="<%= query.code || '' %>">
+        <button type="submit">Enter</button>
+    </form>
+</div>
