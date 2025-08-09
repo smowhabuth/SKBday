@@ -7,23 +7,38 @@
         <p>Dress code: Elegant & Sparkly</p>
         <p>Meet at 8:30 PM at our place - we'll go together with the group.</p>
         
+        <!-- Post a message section -->
+        <div class="post-message-section">
+            <h3>Leave a message</h3>
+            <form action="/comment" method="POST">
+                <input type="hidden" name="day" value="<%= dayNumber %>">
+                <textarea name="text" placeholder="Write something nice..." required></textarea>
+                <button type="submit">Send 💌</button>
+            </form>
+        </div>
+
+        <!-- Envelope grid display -->
         <div class="friends-section">
             <h3>Messages from Friends</h3>
-            <div class="comments">
+            <div class="envelope-grid">
+                <% const pastelIcons = ["🎀", "💌", "📬"]; %>
                 <% comments.forEach(comment => { %>
-                    <div class="comment">
-                        <div class="comment-author"><%= comment.author.name %>:</div>
-                        <div class="comment-text"><%= comment.text %></div>
-                        <div class="comment-time"><%= comment.createdAt.toLocaleString() %></div>
+                    <% const randomIcon = pastelIcons[Math.floor(Math.random() * pastelIcons.length)]; %>
+                    <div class="envelope-item">
+                        <% if (user.accessCode === 'SZA42') { %>
+                            <span 
+                                class="envelope clickable" 
+                                title="Click to open"
+                                data-message="<%- comment.text %>" 
+                                data-author="<%= comment.author.name %>"
+                            ><%= randomIcon %></span>
+                        <% } else { %>
+                            <span class="envelope" title="From <%= comment.author.name %>"><%= randomIcon %></span>
+                        <% } %>
+                        <div class="envelope-name"><%= comment.author.name %></div>
                     </div>
                 <% }); %>
             </div>
-            
-            <form action="/comment" method="POST" class="comment-form">
-                <input type="hidden" name="day" value="<%= dayNumber %>">
-                <textarea name="text" placeholder="Leave a message for the birthday girl!" required></textarea>
-                <button type="submit">Post Message</button>
-            </form>
         </div>
     </div>
     
@@ -32,4 +47,13 @@
             <p>Check back tomorrow for the next surprise!</p>
         </div>
     <% } %>
+</div>
+
+<!-- Modal -->
+<div id="messageModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h3 id="modalAuthor"></h3>
+        <p id="modalMessage"></p>
+    </div>
 </div>
