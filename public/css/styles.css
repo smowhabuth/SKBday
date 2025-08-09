@@ -339,3 +339,139 @@ h2 {
 .back-btn:hover {
     color: #ff4757;
 }
+
+/* Modal styles */
+/* Modal overlay */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    padding-top: 80px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(255, 182, 193, 0.048); /* light pink tint overlay */
+    backdrop-filter: blur(4px);
+}
+
+/* Modal content box */
+.modal-content {
+    background: #fff0f5; /* lavender blush */
+    margin: auto;
+    padding: 25px 30px;
+    border: 2px solid #ffc0cb; /* pastel pink border */
+    width: 80%;
+    max-width: 450px;
+    border-radius: 20px;
+    box-shadow: 0px 8px 18px rgba(0,0,0,0.15);
+    text-align: center;
+    animation: modalPop 0.25s ease-out;
+}
+
+/* Title (author's name) */
+#modalAuthor {
+    font-size: 1.3rem;
+    color: #ff69b4; /* hot pink */
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Message text */
+#modalMessage {
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+/* Close button */
+.close-btn {
+    color: #ff69b4;
+    float: right;
+    font-size: 1.6rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.close-btn:hover {
+    transform: scale(1.2);
+}
+
+/* Small pop-in animation */
+@keyframes modalPop {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+
+.post-message-section {
+    margin-bottom: 25px;
+}
+
+.post-message-section textarea {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    resize: none;
+}
+
+.post-message-section button {
+    margin-top: 8px;
+    padding: 8px 14px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    background: #ffb6c1;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.post-message-section button:hover {
+    background: #ff99aa;
+}
+
+.envelope-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 25px;
+    justify-items: center;
+}
+
+.envelope-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.envelope {
+    font-size: 4rem;
+    cursor: default;
+    transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.envelope.clickable {
+    cursor: pointer;
+}
+
+.envelope.clickable:hover {
+    transform: scale(1.3) rotate(-5deg);
+    filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.15));
+}
+
+.envelope-name {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #444;
+    text-align: center;
+    font-weight: 500;
+}
+
+.envelope.opened {
+    color: #ff6b81;
+}
